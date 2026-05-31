@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= name %></title>
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <% if (user != undefined) { %>
+        <h2 style="position: absolute;">
+            Hello, <%= user %>
+                <% if (admin == 1) { %>
+                (Admin)
+                <% } %>
+        </h2>
+    <% } %>
+    
+    

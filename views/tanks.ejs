@@ -1,0 +1,49 @@
+<%- include("head.ejs") %>
+
+    <main>
+        <div class = "back" onclick="location.href='/all/'">
+            <h2>Back</h2>
+        </div>
+        <h1>
+            <%= name2 %>
+        </h1>
+        <ul id="tanks">
+            <% data.forEach(function(tank){ %>
+                <li>
+                    <%= tank.nation %> - <%= tank.name %> - <%= tank.number %>
+                </li>
+                <% }) %>
+        </ul>
+        <div>
+            <h3>New tank</h3>
+            <form action="/all/tankmuseum/new" method="POST">
+                <% if (user != undefined) { %>
+                    <div>
+                        <input class="text_edit" type="text" name="nation" id="nation" required minlength="1" maxlength="500" placeholder="Nation"/>
+                        <input class="text_edit" type="text" name="name" id="name" required minlength="1" maxlength="500" placeholder="Name"/>
+                        <input class="text_edit" type="number" name="number" id="number" required minlength="1" maxlength="500" min="1" placeholder="Number" />
+                    </div>
+                    <div>
+                        <button style="background-color: #2FBB4E;">Add tank to museum</button>
+                    </div>
+                <% } else { %> 
+                    <div>
+                        <input class="text_edit" type="text" name="nation" id="nation" required minlength="1" maxlength="500" placeholder="Nation" disabled/>
+                        <input class="text_edit" type="text" name="name" id="name" required minlength="1" maxlength="500" placeholder="Name" disabled/>
+                        <input class="text_edit" type="number" name="number" id="number" required minlength="1" maxlength="500" min="1" placeholder="Number" disabled/>
+                    </div>
+                    <div>
+                        <button style="background-color: gray;" disabled>Add tank to museum</button>
+                    </div>
+                    <p><i>Please log in to add tanks</i></p>
+                <% } %>
+            </form>
+        </div>
+        <br><br><br>
+        <hr>
+        <h1>OR</h1>
+        <br>
+        <button onclick="location.href='/all/tankmuseum/edit'"><b>Edit tanks in the museum</b></button>
+    </main>
+</body>
+</html>

@@ -1,0 +1,90 @@
+html {
+    background-color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16pt;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    min-height: 98vh;
+}
+
+main {
+    width: 100%;
+    padding: 10px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    position: relative;
+}
+
+button:not(.button_edit) {
+    padding: 20px;
+    background-color: #0066EE;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    margin: auto;
+    display: block;
+    font-size: 15pt;
+}
+
+.button_edit {
+    text-align: center;
+    align-items: center;
+    line-height: 10px;
+    padding: 8px;
+    background-color: #2FBB4E;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14pt;
+}
+
+.form-error {
+    color: #B00020;
+    margin: 10px auto;
+    font-weight: bold;
+}
+
+.text_edit {
+    padding: 8px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: auto;
+    font-size: 14pt;
+}
+div {
+    margin: auto;
+    margin-bottom: 25px;
+}
+
+h3 {
+    padding-top: 50px;
+}
+
+ul {
+    display: inline-block;
+    text-align: left;
+}
+
+a {
+    color: white;
+}
+
+.back {
+    background-color: transparent; 
+    border: 3px solid #0066EE;
+    color: #0066EE;
+    padding: 2px 40px 2px 40px; 
+    width: fit-content; 
+    border-radius: 20px; 
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    cursor: pointer;
+}

@@ -1,5 +1,6 @@
-# Projekt 04
-rozwinięcie poprzedniego projektu 03, lekkie zmiany UI aby poprawić czytelność. System użytkowników opierający się na bazie danych i cookiesach, administratorzy mogą edytować wszystkie dane, użytkownicy bez uprawnień mogą edytować jedynie dane dodane przez siebie. Bez zalogowania można jedynie oglądać dane. 
+# Projekt 05
+rozwinięcie poprzedniego projektu 04, lekkie zmiany UI aby poprawić czytelność. System użytkowników opierający się na bazie danych i cookiesach, administratorzy mogą edytować wszystkie dane, użytkownicy bez uprawnień mogą edytować jedynie dane dodane przez siebie. Bez zalogowania można jedynie oglądać dane. 
+Poprawki na podstawie review
 jest możliwy przyszły rozwój w postaci dodania nowej bazy danych z np. danymi technicznymi czołgów (też możliwe do edycji przez użytkownika) w relacji z listą poprzez foreign key
 
 -

@@ -1,0 +1,10 @@
+Uwagi:
+- pole username w stworzeniu konta nie wypisuje błędów wymagań do nazwy
+- W sytuacji logowania za pomocą niepoprawnych danych, serwer w nieskończoność oczekuje werifykacji passhashów. Logika obsługuję niezdefiniowane hasło/username, lecz nie obsługuje niepoprawnych tych danych.
+tldr serwer nie wie co zrobić gdy haslo lub username jest zle
+(index.js 159-173, app.post(all/account/login). Specifycznie if w linii 164 nie ma else'a.
+
+- Pozwolenie na logowanie i tworzenie kont będąc już zalogowanym według mnie to dziwny wybór. Może nie renderuj lub blokuj requesty dla zalogowanych. 
+- Aplikacja pozwala na stworzenie kilku kont z tą samą nazwą, a użytkownik loguje się używając nazwy. Nie wiem jak działa logowania, czy daję do pierwszego/itd. trzeba blokować taką próbę stworzenie.
+- Może aplikacja powinna pokazywać od razu czy użytkownik jest adminem?
+- formularz nie werifykuje danych po wysłaniu. można stworzyć konto bez nazwy. można stworzyć konto bez hasła. da się do nich logować.

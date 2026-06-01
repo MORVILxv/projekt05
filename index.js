@@ -30,7 +30,7 @@ function admin_check(req, res, username) {
     return false;
 }
 
-app.get("/all", (req, res) => {
+app.get("/", (req, res) => {
     let username = req.signedCookies["Account"];
     const mname = db_ops.select_info.get();
     res.render("names", {
@@ -43,7 +43,7 @@ app.get("/all", (req, res) => {
     })
 });
 
-app.get("/all/about", (req, res) => {
+app.get("/about", (req, res) => {
     let username = req.signedCookies["Account"];
     const data = db_ops.select_info.get();
     if (data != null) {
@@ -58,7 +58,7 @@ app.get("/all/about", (req, res) => {
     }
 });
 
-app.get("/all/tankmuseum", (req, res) => {
+app.get("/tankmuseum", (req, res) => {
     const username = req.signedCookies["Account"];
     const info = db_ops.select_info.get();
     const data = db_ops.select_tanks.all();
@@ -75,7 +75,7 @@ app.get("/all/tankmuseum", (req, res) => {
     }
 });
 
-app.post("/all/tankmuseum/new", (req, res) => {
+app.post("/tankmuseum/new", (req, res) => {
     const tanks = db_ops.select_tanks.all();
     const username = req.signedCookies["Account"];
     let added = 0;
@@ -90,10 +90,10 @@ app.post("/all/tankmuseum/new", (req, res) => {
         db_ops.insert_tank.run(req.body.nation, req.body.name, req.body.number, username);
     }
     
-    res.redirect('/all/tankmuseum');
+    res.redirect('/tankmuseum');
 });
 
-app.get("/all/tankmuseum/edit", async (req, res) => {
+app.get("/tankmuseum/edit", async (req, res) => {
     let username = req.signedCookies["Account"];
     const data = db_ops.select_tanks.all();
     if (data != undefined) {
@@ -118,26 +118,26 @@ app.get("/all/tankmuseum/edit", async (req, res) => {
     }
 });
 
-app.post("/all/tankmuseum/edit/new", (req, res) => {
+app.post("/tankmuseum/edit/new", (req, res) => {
     const username = req.signedCookies["Account"];
     if(username != undefined) {
         if (req.body.action == "delete") {
             db_ops.delete_tank.run(req.body.id);
-            res.redirect('/all/tankmuseum/edit');
+            res.redirect('/tankmuseum/edit');
         }
         else if (req.body.action == "update") {
             db_ops.update_tank.run(req.body.nation, req.body.name, req.body.number, username, req.body.id);
-            res.redirect('/all/tankmuseum/edit');
+            res.redirect('/tankmuseum/edit');
         }
         else if (req.body.action == "noadmin") {
-            res.redirect("/all/tankmuseum/edit/noadmin");
+            res.redirect("/tankmuseum/edit/noadmin");
         }
     } else {
-        res.redirect("/all/tankmuseum/edit/noadmin");
+        res.redirect("/tankmuseum/edit/noadmin");
     }
 });
 
-app.get("/all/tankmuseum/edit/noadmin", (req, res) => {
+app.get("/tankmuseum/edit/noadmin", (req, res) => {
     const username = req.signedCookies["Account"];
     res.render("noadmin", {
         name: "No admin privileges",
@@ -146,7 +146,7 @@ app.get("/all/tankmuseum/edit/noadmin", (req, res) => {
     });
 });
 
-app.get("/all/account", (req, res) => {
+app.get("/account", (req, res) => {
     let username = req.signedCookies["Account"];
     if (username == undefined || username == null) {
         res.render("account", {
@@ -164,7 +164,7 @@ app.get("/all/account", (req, res) => {
     }
 });
 
-app.post("/all/account/signup", async (req, res) => {
+app.post("/account/signup", async (req, res) => {
     if (!req.signedCookies["Account"]) {
         const username = req.body.username?.trim();
         const password = req.body.password;
@@ -204,32 +204,32 @@ app.post("/all/account/signup", async (req, res) => {
             } else {
                 let passwordhash = await argon2.hash(password, HASH_PARAMS);
                 db_ops.insert_user.run(username, passwordhash, admin);
-                res.redirect("/all/account");
+                res.redirect("/account");
             }
         }
     }
 });
-app.post("/all/account/login", async (req, res) => {
+app.post("/account/login", async (req, res) => {
     const username = req.body.login_username;
     const password = req.body.login_password;
     const user_db = db_ops.select_user.get(username);
     if (user_db != undefined && user_db != null) {
         if (await argon2.verify(user_db.passwordhash, password, HASH_PARAMS)) {
             res.cookie("Account", username, { maxAge: 3600000, signed: true, httpOnly: true });
-            res.redirect("/all/account");
+            res.redirect("/account");
         }
         else {
-            res.redirect("/all/account");
+            res.redirect("/account");
         }
     }
     else {
-        res.redirect("/all/account");
+        res.redirect("/account");
         console.log("Failed to log in");
     }
 });
-app.post("/all/account/logout", (req, res) => {
+app.post("/account/logout", (req, res) => {
     res.clearCookie("Account");
-    res.redirect("/all/account");
+    res.redirect("/account");
 })
 
 

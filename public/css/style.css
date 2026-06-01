@@ -1,7 +1,7 @@
 html {
     background-color: white;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 16pt;
+    font-size: 20pt;
 }
 
 body {
@@ -29,7 +29,7 @@ button:not(.button_edit) {
     cursor: pointer;
     margin: auto;
     display: block;
-    font-size: 15pt;
+    font-size: 18pt;
 }
 
 .button_edit {
@@ -42,7 +42,7 @@ button:not(.button_edit) {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14pt;
+    font-size: 17pt;
 }
 
 .form-error {

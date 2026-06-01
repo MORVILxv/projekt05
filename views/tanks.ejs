@@ -1,7 +1,7 @@
 <%- include("head.ejs") %>
 
     <main>
-        <div class = "back" onclick="location.href='/all/'">
+        <div class = "back" onclick="location.href='/'">
             <h2>Back</h2>
         </div>
         <h1>
@@ -16,7 +16,7 @@
         </ul>
         <div>
             <h3>New tank</h3>
-            <form action="/all/tankmuseum/new" method="POST">
+            <form action="/tankmuseum/new" method="POST">
                 <% if (user != undefined) { %>
                     <div>
                         <input class="text_edit" type="text" name="nation" id="nation" required minlength="1" maxlength="500" placeholder="Nation"/>
@@ -43,7 +43,7 @@
         <hr>
         <h1>OR</h1>
         <br>
-        <button onclick="location.href='/all/tankmuseum/edit'"><b>Edit tanks in the museum</b></button>
+        <button onclick="location.href='/tankmuseum/edit'"><b>Edit tanks in the museum</b></button>
     </main>
 </body>
 </html>
